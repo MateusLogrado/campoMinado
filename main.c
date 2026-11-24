@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "include/draw.h"
+#include "include/logic.h"
 
 void clearEnter(){
     int c;
@@ -12,8 +13,11 @@ void clearEnter(){
 }
 
 int main(){
+    
     const int Sx = 10;
     const int Sy = 10;
+    int campo[Sx][Sy];
+    field(Sx, Sy, campo);
     char input[4];
     
     bool prog = true;
@@ -24,7 +28,7 @@ int main(){
 
         if(inGame){
 
-          drawField(Sx, Sy);
+          drawField(Sx, Sy, campo);
           scanf("%3s", input);
             
         }else{
