@@ -14,15 +14,19 @@ void clearEnter(){
 
 int main(){
     
-    const int Sx = 10;
-    const int Sy = 10;
+    const int Sx = 9;
+    const int Sy = 9;
     int campo[Sx][Sy];
     field(Sx, Sy, campo);
     char input[4];
+    int x = 0;
+    int y = 0;
+    char d;
     
     bool prog = true;
     bool inGame = false;
     int resp = 0;
+    
     
     while(prog){
 
@@ -30,6 +34,8 @@ int main(){
 
           drawField(Sx, Sy, campo);
           scanf("%3s", input);
+          inputAscertain(input, &x, &y, &d);
+          
             
         }else{
             printf("============================\n");
