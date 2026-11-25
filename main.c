@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -18,7 +19,7 @@ int main(){
     const int Sy = 9;
     int campo[Sx][Sy];
     field(Sx, Sy, campo);
-    char input[4];
+    char input[20];
     int x = 0;
     int y = 0;
     char d;
@@ -33,10 +34,11 @@ int main(){
         if(inGame){
 
           drawField(Sx, Sy, campo);
-          scanf("%3s", input);
-          inputAscertain(input, &x, &y, &d);
+          if(fgets(input, sizeof(input), stdin) != NULL){
+              input[strcspn(input, "\n")] = '\0';
+              inputAscertain(input, &x, &y, &d);
+          }
           
-            
         }else{
             printf("============================\n");
             printf("||      Campo Minado      ||\n");
@@ -55,7 +57,7 @@ int main(){
                 case 2:
                     system("clear");
                     printf("a maneira facil de entender como funciona os comandos aqui \n");
-                    printf("você ira digitar tudo junto, exemplo: você digitou 34b \n");
+                    printf("você ira digitar tudo junto, exemplo: você digitou '3 4 b' \n");
                     printf("o primeiro digito é 3 que é o eixo X \n");
                     printf("o segundo digito é 4 que é o eixo Y \n");
                     printf("b = é a ação, sendo 'b' uma bandeira para marcar a bomba e 'd' para descobrir, podendo ser a bomba ou uma area sem bomba \n");
