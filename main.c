@@ -38,6 +38,8 @@ int main(){
               input[strcspn(input, "\n")] = '\0';
               inputAscertain(input, &x, &y, &d);
           }
+          fieldModify(x, y, d, Sx, Sy, campo);
+          
           
         }else{
             printf("============================\n");

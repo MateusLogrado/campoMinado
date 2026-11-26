@@ -3,8 +3,10 @@
 
 void field(int Sx, int Sy, int arr[Sx][Sy]);
 
-void inputModify(int Sx, int Sy, int arr[Sx][Sy], char resp);
+void fieldModify(int x, int y, char d, int Sx, int Sy, int field[Sx][Sy]);
 
-void inputAscertain(char input[4], int *x, int *y, char *d);
+void fieldInicilizy(int Sx, int Sy, int arr[Sx][Sy]);
+
+void inputAscertain(char input[20], int *x, int *y, char *d);
 
 #endif
