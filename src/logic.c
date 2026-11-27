@@ -1,14 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "../include/logic.h"
 
 void field(int Sx, int Sy, int arr[Sx][Sy]){
-    for(int i = 0; i < Sx; i++){
-        for(int j = 0; j < Sy; j++){
-            arr[i][j] = 10;
-        }
-    }
-}
-
-void fieldInicilizy(int Sx, int Sy, int arr[Sx][Sy]){
     for(int i = 0; i < Sx; i++){
         for(int j = 0; j < Sy; j++){
             arr[i][j] = 10;
@@ -59,5 +53,24 @@ void fieldModify(int x, int y, char d, int Sx, int Sy, int field[Sx][Sy]) {
         field[x][y] = 0;
     } else {
         // Tratamento de erro humano pro futuro
+    }
+}
+void fieldFill(int Sx, int Sy, int fieldAlt[Sx][Sy], int x, int y){
+    int bombsPlaced = 0;
+    for(int i = 0; i< Sx; i++){
+        for(int j = 0; j < Sy; j++){
+            if (i == x && j == y) {
+                fieldAlt[i][j] = 0; // posição inicial segura
+                printf(" %d ", fieldAlt[i][j]);
+            } else if ((rand() % 100) < 15) { // ~15% de chance de bomba
+                fieldAlt[i][j] = -1;
+                bombsPlaced++;
+                printf(" %d ", fieldAlt[i][j]);
+            } else {
+                fieldAlt[i][j] = 0;
+                printf(" %d ", fieldAlt[i][j]);
+            }
+        }
+        printf("\n");
     }
 }

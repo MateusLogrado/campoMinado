@@ -17,8 +17,11 @@ int main(){
     
     const int Sx = 9;
     const int Sy = 9;
+    bool gameStart = false;
     int campo[Sx][Sy];
+    int campoAlt[Sx][Sy];
     field(Sx, Sy, campo);
+    
     char input[20];
     int x = 0;
     int y = 0;
@@ -37,6 +40,10 @@ int main(){
           if(fgets(input, sizeof(input), stdin) != NULL){
               input[strcspn(input, "\n")] = '\0';
               inputAscertain(input, &x, &y, &d);
+              if(!gameStart){
+                  fieldFill(Sx, Sy, campoAlt, x, y);
+                  gameStart = true;
+              }
           }
           fieldModify(x, y, d, Sx, Sy, campo);
           
@@ -55,6 +62,7 @@ int main(){
                 case 1:
                     system("clear");
                     inGame = true;
+                    gameStart = false;
                     break;
                 case 2:
                     system("clear");
